@@ -1,5 +1,6 @@
 const board = document.getElementById('board')
 const statusText = document.getElementById('status')
+// getElementById serve para vc buscar um elemnto mcom ID x no html, no caso board e status
 
 let jogoAtivo = true
 let jogadorAtual = 'X'
@@ -10,6 +11,7 @@ function reiniciarJogo() {
     jogoAtivo = true
     jogadorAtual = 'X'
     celulas = Array(9).fill(null)
+    // o fill serve para preemncher uma estrutura de dados ou elemento grafico com um valor, no caso null
     // console.log(statusText);
     statusText.textContent = `turno do jogador X`
     // console.log(statusText);
@@ -18,6 +20,7 @@ function reiniciarJogo() {
 
 function criarTabuleiro() {
     board.innerHTML = ``
+    // o innerHTML permite com que ele leia o html e coloque aqui dentro.
     celulas.forEach((celula, index) => {
         // o forEach aqui ele esta criando um array chamado celula e dando um ID unico para ele
         const div = document.createElement('div');
@@ -25,12 +28,15 @@ function criarTabuleiro() {
         div.classList.add('cell');
         // o add está criando uma class cell para sofrer as mudanças do css
         div.dataset.index = index;
+        // o dataset permite que a gnt modifique o html pelo js
         div.addEventListener('click', clickCelula)
         // aqui em cima o addEventListener está citando que caso ocorra um clique execute o função click
         if (celula) {
             div.textContent = celula
             div.classList.add(celula)
+            // aqui o add está criando uma celula dentro da div.
             div.classList.add(celula.toLowerCase())
+            // o toLowerCase está deixando todos os caracteres minusculos dentro da celula
         }
         board.appendChild(div);
         // aqui ele está criando uma div para ser elemento filho do board
@@ -54,6 +60,7 @@ function clickCelula(e) {
         statusText.textContent = `O jogador ${jogadorAtual} venceu!`
         jogoAtivo = false
     } else if (!celulas.includes(null)) {
+        // includes serve para verificar se uma variavel é true ou false
         // empate
         jogoAtivo = false
         statusText.textContent = `O jogo empatou!`
