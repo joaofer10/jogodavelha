@@ -1,10 +1,12 @@
 const board = document.getElementById('board')
 const statusText = document.getElementById('status')
-// getElementById serve para vc buscar um elemnto mcom ID x no html, no caso board e status
+const contadorText = document.getElementById('contador')
+// getElementById serve para vc buscar um elemnto com ID no html, no caso board e status
 
 let jogoAtivo = true
 let jogadorAtual = 'X'
 let celulas = Array(9).fill(null)
+let i = 1
 
 function reiniciarJogo() {
     // Função de iniciar jogo.
@@ -14,8 +16,11 @@ function reiniciarJogo() {
     // o fill serve para preemncher uma estrutura de dados ou elemento grafico com um valor, no caso null
     // console.log(statusText);
     statusText.textContent = `turno do jogador X`
+    i=1
+    contadorText.textContent = `jogada ${i}`
     // console.log(statusText);
     criarTabuleiro()
+    
 }
 
 function criarTabuleiro() {
@@ -68,6 +73,7 @@ function clickCelula(e) {
         // aqui embaixo está um if contatenado, ele faz a mesma coisa que um if normal mas ele fica numa linha só para confirmar a condição
         jogadorAtual = jogadorAtual === 'X' ? 'O' : 'X'
         statusText.textContent = `turno do jogador ${jogadorAtual}`
+        contadorText.textContent = `jogada ${i++}`
         // aqui o statusText está sendo chamado para que o conteudo dentre dele se torne "turno do jogador tal"
         // já o cifrão está sendo usado para indicar que o esta dentro das chaves é uma variavel
     }

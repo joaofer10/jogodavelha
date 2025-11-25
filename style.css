@@ -55,6 +55,12 @@ body {
     text-align: center;
     color: white;
 }
+#contador {
+    margin: 20px;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+}
 
 #div-img {
     display: flex;
